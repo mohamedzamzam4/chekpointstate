@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import React, { Component } from "react";
+import App2 from "./App2";
 
 export default class App extends Component {
   state = {
@@ -14,45 +15,22 @@ export default class App extends Component {
     shows: false,
     timer: 0,
   };
-
-  componentDidMount = () => {
-    setInterval(() => {
-      console.log(this.state.timer);
-      this.setState({ timer: this.state.timer + 1 });
-    }, 1000);
-  };
-
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1>{this.state.timer}</h1>
-          <button
-            onClick={() => {
-              if (this.state.shows == true) {
-                this.setState({ shows: false });
-              } else {
-                this.setState({ shows: true });
-              }
-              console.log(this.state.shows);
-            }}
-          >
-            SHOW
-          </button>
-
-          {this.state.shows ? (
-            <div>
-              <h1>{this.state.person.fullName}</h1>
-              <h2>{this.state.person.bio}</h2>
-              <img
-                style={{ width: "200px", height: "250px" }}
-                src={this.state.person.imgSrc}
-                alt="dada"
-              />
-              <h1>{this.state.person.profession}</h1>
-            </div>
-          ) : null}
-        </header>
+        <button
+          onClick={() => {
+            if (this.state.shows == true) {
+              this.setState({ shows: false });
+            } else {
+              this.setState({ shows: true });
+            }
+            console.log(this.state.shows);
+          }}
+        >
+          SHOW
+        </button>
+        {this.state.shows ? <App2 /> : null}
       </div>
     );
   }
